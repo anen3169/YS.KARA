@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YS | KARA</title>
+
+<style>
+body{margin:0;font-family:Arial;background:#f2f2f2;}
+nav{
+background:#fff;
+padding:15px;
+display:flex;
+justify-content:center;
+gap:20px;
+box-shadow:0 2px 8px rgba(0,0,0,.2);
+position:sticky;
+top:0;
+}
+nav a{
+text-decoration:none;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+}
+.page{display:none;padding:25px;}
+.active{display:block;}
+.card{
+background:#fff;
+padding:20px;
+border-radius:12px;
+max-width:700px;
+margin:auto;
+box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+h1,h2{text-align:center;}
+button{
+padding:10px 18px;
+border:none;
+background:#ffcc00;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a onclick="openPage('ana')">Ana Sayfa</a>
+<a onclick="openPage('surum')">Sürüm</a>
+<a onclick="openPage('sezon')">Sezon</a>
+</nav>
+
+<div id="ana" class="page active">
+<div class="card">
+<h1>YS | KARA</h1>
+
+<!-- # Kulüp açıklaması -->
+
+<p># Kulüp hakkında bilgi</p>
+
+<!-- # Üye sayısı -->
+
+<p>YS|KARA adlı kulüp şuan 2.sezon v2.0 döneminden geçiyor</p>
+
+<button onclick="openPage('sezon')">
+Sezonu Gör
+</button>
+
+</div>
+</div>
+
+<div id="surum" class="page">
+<div class="card">
+
+<h2>Sürüm Bilgisi</h2>
+
+<!-- # Sürüm -->
+
+<p>v2.0</p>
+
+<!-- # Güncelleme Tarihi -->
+<!-- # Yenilikler -->
+
+<ul>
+<li>kulübe özel site açıldı</li>
+<li>yeni sezon geldi</li>
+<li>düzgün bir kalıba girinmeye çalışıldı</li>
+</ul>
+
+</div>
+</div>
+
+<div id="sezon" class="page">
+<div class="card">
+
+<h2>Sezon Bilgileri</h2>
+
+<!-- # Sezon Adı -->
+
+<p>Yeni Sezon Eski</p>
+
+<ul>
+<li>Eski sezonu kulübümüzü az da olsa eskiye getirmeye çalışır</li>
+<li>başkan: YSE|Ye-yus</li>
+<li>başkan yardımcıs: İMP|Ölümsüz</li>
+</ul>
+
+</div>
+</div>
+
+<script>
+function openPage(id){
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
+document.getElementById(id)
+.classList.add("active");
+}
+</script>
+
+</body>
+</html>
