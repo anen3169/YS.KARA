@@ -2,117 +2,253 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>YS | KARA</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f2f2f2;}
-nav{
-background:#fff;
-padding:15px;
-display:flex;
-justify-content:center;
-gap:20px;
-box-shadow:0 2px 8px rgba(0,0,0,.2);
-position:sticky;
-top:0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
-nav a{
-text-decoration:none;
-color:#000;
-font-weight:bold;
-cursor:pointer;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f2f2f7;
+  color: #1c1c1e;
+  min-height: 100vh;
 }
-.page{display:none;padding:25px;}
-.active{display:block;}
-.card{
-background:#fff;
-padding:20px;
-border-radius:12px;
-max-width:700px;
-margin:auto;
-box-shadow:0 3px 10px rgba(0,0,0,.15);
+
+/* Üst bar */
+.top-bar {
+  background: #ffffff;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #e5e5ea;
 }
-h1,h2{text-align:center;}
-button{
-padding:10px 18px;
-border:none;
-background:#ffcc00;
-border-radius:8px;
-font-weight:bold;
-cursor:pointer;
+
+.top-bar .logo {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+}
+
+.top-bar .status {
+  font-size: 13px;
+  color: #8e8e93;
+}
+
+/* Navigasyon */
+nav {
+  background: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e5ea;
+  position: sticky;
+  top: 53px;
+  z-index: 99;
+}
+
+nav a {
+  text-decoration: none;
+  color: #8e8e93;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+nav a.active-nav {
+  background: #007aff;
+  color: white;
+}
+
+/* Sayfalar */
+.page {
+  display: none;
+  padding: 20px 16px 40px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.page.active {
+  display: block;
+}
+
+/* Ana sayfa kartları */
+.home-header {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-top: 10px;
+}
+
+.home-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin-bottom: 6px;
+}
+
+.home-header .tag {
+  display: inline-block;
+  background: #e5e5ea;
+  color: #1c1c1e;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-top: 8px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #8e8e93;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1c1c1e;
+}
+
+.big-number {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  background: #007aff;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.btn:active {
+  opacity: 0.85;
+}
+
+/* Diğer sayfalar */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  background: #ffffff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 </style>
 </head>
 <body>
 
+<div class="top-bar">
+  <div class="logo">YS | KARA</div>
+  <div class="status">v2.0</div>
+</div>
+
 <nav>
-<a onclick="openPage('ana')">Ana Sayfa</a>
-<a onclick="openPage('surum')">Sürüm</a>
-<a onclick="openPage('sezon')">Sezon</a>
+  <a onclick="openPage('ana')" id="nav-ana" class="active-nav">Ana Sayfa</a>
+  <a onclick="openPage('surum')" id="nav-surum">Sürüm</a>
+  <a onclick="openPage('sezon')" id="nav-sezon">Sezon</a>
 </nav>
 
+<!-- ANA SAYFA -->
 <div id="ana" class="page active">
-<div class="card">
-<h1>YS | KARA</h1>
+  <div class="home-header">
+    <h1>YS | KARA</h1>
+    <div class="tag">#2LVJQVOYQ</div>
+  </div>
 
+  <div class="card">
+    <h3>Durum</h3>
+    <p>YS|KARA adlı kulüp şuan 2.sezon v2.0 döneminden geçiyor</p>
+  </div>
 
-<!-- # Üye sayısı -->
+  <div class="card">
+    <h3>Sezon</h3>
+    <p class="big-number">2. Sezon</p>
+    <p style="margin-top:4px; color:#8e8e93; font-size:14px;">v2.0 dönemi</p>
+  </div>
 
-<p>YS|KARA adlı kulüp şuan 2.sezon v2.0 döneminden geçiyor</p>
-
-<button onclick="openPage('sezon')">
-Sezonu Gör
-</button>
-
+  <button class="btn" onclick="openPage('sezon')">Sezonu Gör</button>
 </div>
-</div>
 
+<!-- SÜRÜM -->
 <div id="surum" class="page">
-<div class="card">
+  <div class="section-title">Sürüm Bilgisi</div>
+  
+  <div class="card">
+    <h3>Güncel Sürüm</h3>
+    <p class="big-number">v2.0</p>
+  </div>
 
-<h2>Sürüm Bilgisi</h2>
-
-<!-- # Sürüm -->
-
-<p>v2.0</p>
-
-<!-- # Güncelleme Tarihi -->
-<!-- # Yenilikler -->
-
-<ul>
-<li>kulübe özel site açıldı</li>
-<li>yeni sezon geldi</li>
-<li>düzgün bir kalıba girinmeye çalışıldı</li>
-</ul>
-
-</div>
+  <ul>
+    <li>kulübe özel site açıldı</li>
+    <li>yeni sezon geldi</li>
+    <li>düzgün bir kalıba girinmeye çalışıldı</li>
+  </ul>
 </div>
 
+<!-- SEZON -->
 <div id="sezon" class="page">
-<div class="card">
+  <div class="section-title">Sezon Bilgileri</div>
 
-<h2>Sezon Bilgileri</h2>
+  <div class="card">
+    <h3>Sezon Adı</h3>
+    <p>Eski</p>
+  </div>
 
-<!-- # Sezon Adı -->
-
-<p>Yeni Sezon Eski</p>
-
-<ul>
-<li>Eski sezonu kulübümüzü az da olsa eskiye getirmeye çalışır</li>
-<li>başkan: YSE|Ye-yus</li>
-<li>başkan yardımcıs: İMP|Ölümsüz</li>
-</ul>
-
-</div>
+  <ul>
+    <li>Eski sezonu kulübümüzü az da olsa eskiye getirmeye çalışır</li>
+    <li>başkan: YSE|Ye-yus</li>
+    <li>başkan yardımcıs: İMP|Ölümsüz</li>
+  </ul>
 </div>
 
 <script>
-function openPage(id){
-document.querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
-document.getElementById(id)
-.classList.add("active");
+function openPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+
+  // Nav aktiflik
+  document.querySelectorAll("nav a").forEach(a => a.classList.remove("active-nav"));
+  document.getElementById("nav-" + id).classList.add("active-nav");
 }
 </script>
 
