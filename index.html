@@ -59,9 +59,9 @@ nav {
 nav a {
   text-decoration: none;
   color: #8e8e93;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: 20px;
   transition: 0.2s;
 }
@@ -173,6 +173,43 @@ ul li {
   font-size: 15px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
+
+/* Geliştirme Ekibi */
+.team-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.team-avatar {
+  width: 48px;
+  height: 48px;
+  background: #007aff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.team-info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.team-info p {
+  font-size: 13px;
+  color: #8e8e93;
+}
 </style>
 </head>
 <body>
@@ -186,6 +223,7 @@ ul li {
   <a onclick="openPage('ana')" id="nav-ana" class="active-nav">Ana Sayfa</a>
   <a onclick="openPage('surum')" id="nav-surum">Sürüm</a>
   <a onclick="openPage('sezon')" id="nav-sezon">Sezon</a>
+  <a onclick="openPage('ekip')" id="nav-ekip">Ekip</a>
 </nav>
 
 <!-- ANA SAYFA -->
@@ -197,7 +235,7 @@ ul li {
 
   <div class="card">
     <h3>Durum</h3>
-    <p>YS|KARA adlı kulüp şuan 2.sezon v2.0 döneminden geçiyor</p>
+    <p>YS|KARA adlı kulüp şu an 2. sezon v2.0 döneminden geçiyor</p>
   </div>
 
   <div class="card">
@@ -219,9 +257,9 @@ ul li {
   </div>
 
   <ul>
-    <li>kulübe özel site açıldı</li>
-    <li>yeni sezon geldi</li>
-    <li>düzgün bir kalıba girinmeye çalışıldı</li>
+    <li>Kulübe özel site açıldı</li>
+    <li>Yeni sezon geldi</li>
+    <li>Düzgün bir kalıba girilmeye çalışıldı</li>
   </ul>
 </div>
 
@@ -236,9 +274,35 @@ ul li {
 
   <ul>
     <li>Eski sezonu kulübümüzü az da olsa eskiye getirmeye çalışır</li>
-    <li>başkan: YSE|Ye-yus</li>
-    <li>başkan yardımcıs: İMP|Ölümsüz</li>
+    <li>Başkan: YSE|Ye-yus</li>
+    <li>Başkan Yardımcısı: İMP|Ölümsüz</li>
   </ul>
+</div>
+
+<!-- GELİŞTİRME EKİBİ -->
+<div id="ekip" class="page">
+  <div class="section-title">Geliştirme Ekibi</div>
+
+  <div class="team-card">
+    <div class="team-avatar">Y</div>
+    <div class="team-info">
+      <h4>YSE|Ye-yus</h4>
+      <p>Başkan & Site Geliştirici</p>
+    </div>
+  </div>
+
+  <div class="team-card">
+    <div class="team-avatar">Ö</div>
+    <div class="team-info">
+      <h4>İMP|Ölümsüz</h4>
+      <p>Başkan Yardımcısı</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 20px;">
+    <h3>Not</h3>
+    <p>Bu site YS|KARA kulübü için özel olarak geliştirilmektedir.</p>
+  </div>
 </div>
 
 <script>
