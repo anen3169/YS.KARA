@@ -79,16 +79,16 @@ nav a.active-nav {
   padding: 20px 16px 40px;
   max-width: 480px;
   margin: 0 auto;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1), 
-              transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .page.active {
   display: block;
-  opacity: 1;
-  transform: translateY(0);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Ana sayfa */
@@ -135,7 +135,7 @@ nav a.active-nav {
   padding: 18px 20px;
   margin-bottom: 14px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 .card:active {
@@ -161,24 +161,41 @@ nav a.active-nav {
   letter-spacing: -1px;
 }
 
-.btn {
-  display: block;
-  width: 100%;
-  background: #007aff;
-  color: white;
-  border: none;
-  padding: 16px;
-  border-radius: 14px;
-  font-size: 16px;
-  font-weight: 600;
+/* Ana sayfa butonları */
+.home-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
   margin-top: 20px;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.btn:active {
-  transform: scale(0.97);
-  opacity: 0.9;
+.home-btn {
+  background: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 18px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1c1c1e;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.home-btn:active {
+  transform: scale(0.96);
+  background: #f0f0f5;
+}
+
+.home-btn.full {
+  grid-column: 1 / -1;
+  background: #007aff;
+  color: white;
+}
+
+.home-btn.full:active {
+  background: #0066d6;
 }
 
 /* Diğer sayfalar */
@@ -249,7 +266,7 @@ ul li:active {
   color: #8e8e93;
 }
 
-/* Toast Bildirimi */
+/* Toast */
 .toast {
   position: fixed;
   bottom: 40px;
@@ -305,7 +322,12 @@ ul li:active {
     <p style="margin-top:4px; color:#8e8e93; font-size:14px;">v2.0 dönemi</p>
   </div>
 
- 
+  <div class="home-buttons">
+    <button class="home-btn" onclick="openPage('sezon')">Sezon</button>
+    <button class="home-btn" onclick="openPage('surum')">Sürüm</button>
+    <button class="home-btn full" onclick="openPage('ekip')">Geliştirme Ekibi</button>
+  </div>
+</div>
 
 <!-- SÜRÜM -->
 <div id="surum" class="page">
@@ -365,26 +387,23 @@ ul li:active {
   </div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast">Etiket kopyalandı</div>
 
 <script>
 function openPage(id) {
-  // Önce aktif sayfayı gizle
+  // Tüm sayfaları gizle
   document.querySelectorAll(".page").forEach(p => {
     p.classList.remove("active");
   });
 
   // Yeni sayfayı göster
   const newPage = document.getElementById(id);
-  newPage.style.display = "block";
-  
-  // Animasyon için küçük gecikme
-  requestAnimationFrame(() => {
-    newPage.classList.add("active");
-  });
+  newPage.classList.add("active");
 
-  // Nav aktiflik
+  // En üste kaydır
+  window.scrollTo({ top: 0, behavior: "instant" });
+
+  // Nav aktifliği
   document.querySelectorAll("nav a").forEach(a => a.classList.remove("active-nav"));
   document.getElementById("nav-" + id).classList.add("active-nav");
 }
@@ -395,14 +414,10 @@ function copyTag() {
     const tagEl = document.getElementById("club-tag");
     const toast = document.getElementById("toast");
 
-    // Tag yeşile dönsün
     tagEl.classList.add("copied");
     tagEl.innerText = "Kopyalandı!";
-
-    // Toast göster
     toast.classList.add("show");
 
-    // 1.6 saniye sonra eski haline dön
     setTimeout(() => {
       tagEl.classList.remove("copied");
       tagEl.innerText = tag;
