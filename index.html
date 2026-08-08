@@ -53,6 +53,7 @@ nav {
   position: sticky;
   top: 53px;
   z-index: 99;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -60,7 +61,7 @@ nav a {
   color: #8e8e93;
   font-size: 13px;
   font-weight: 500;
-  padding: 6px 12px;
+  padding: 6px 10px;
   border-radius: 20px;
   transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
@@ -183,16 +184,6 @@ nav a.active-nav {
   background: #f0f0f5;
 }
 
-.home-btn.full {
-  grid-column: 1 / -1;
-  background: #007aff;
-  color: white;
-}
-
-.home-btn.full:active {
-  background: #0066d6;
-}
-
 .section-title {
   font-size: 22px;
   font-weight: 700;
@@ -259,6 +250,33 @@ ul li:active {
   color: #8e8e93;
 }
 
+.top-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  text-align: center;
+}
+
+.top-card .label {
+  font-size: 14px;
+  color: #8e8e93;
+  margin-bottom: 8px;
+}
+
+.top-card .name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.top-card .value {
+  font-size: 15px;
+  color: #007aff;
+  font-weight: 600;
+}
+
 .toast {
   position: fixed;
   bottom: 40px;
@@ -293,6 +311,7 @@ ul li:active {
   <a onclick="openPage('ana')" id="nav-ana" class="active-nav">Ana Sayfa</a>
   <a onclick="openPage('surum')" id="nav-surum">Sürüm</a>
   <a onclick="openPage('sezon')" id="nav-sezon">Sezon</a>
+  <a onclick="openPage('encok')" id="nav-encok">En Çok</a>
   <a onclick="openPage('ekip')" id="nav-ekip">Ekip</a>
 </nav>
 
@@ -322,7 +341,8 @@ ul li:active {
   <div class="home-buttons">
     <button class="home-btn" onclick="openPage('sezon')">Sezon</button>
     <button class="home-btn" onclick="openPage('surum')">Sürüm</button>
-    <button class="home-btn full" onclick="openPage('ekip')">Geliştirme Ekibi</button>
+    <button class="home-btn" onclick="openPage('encok')">En Çok</button>
+    <button class="home-btn" onclick="openPage('ekip')">Ekip</button>
   </div>
 </div>
 
@@ -354,8 +374,26 @@ ul li:active {
   <ul>
     <li>Eski sezonu kulübümüzü az da olsa eskiye getirmeye çalışır</li>
     <li>Başkan: YSE|Ye-yus</li>
+    <li>Başkan Yardımcısı: İMP|Ölümsüz</li>
     <li>Başkan Yardımcısı: İmparator Hamza</li>
   </ul>
+</div>
+
+<!-- EN ÇOK -->
+<div id="encok" class="page">
+  <div class="section-title">En Çok</div>
+
+  <div class="top-card">
+    <div class="label">En Çok Kupa</div>
+    <div class="name">Tellioğlu</div>
+    <div class="value">1. Sıra</div>
+  </div>
+
+  <div class="top-card">
+    <div class="label">En Çok Mega Kumbara</div>
+    <div class="name">Belirlenmedi</div>
+    <div class="value">?</div>
+  </div>
 </div>
 
 <!-- GELİŞTİRME EKİBİ -->
@@ -367,6 +405,14 @@ ul li:active {
     <div class="team-info">
       <h4>YSE|Ye-yus</h4>
       <p>Başkan & Site Geliştirici</p>
+    </div>
+  </div>
+
+  <div class="team-card">
+    <div class="team-avatar">Ö</div>
+    <div class="team-info">
+      <h4>İMP|Ölümsüz</h4>
+      <p>Başkan Yardımcısı</p>
     </div>
   </div>
 
